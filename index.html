@@ -3,148 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Animatsion Slayd</title>
+    <title>YouTube Style Premium Slider</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        /* 1. RANGLAR VA ASOSIY STILLAR */
+        /* ASOSIY STILLAR */
         :root {
-            --primary-blue: #1d3557;   /* To'q ko'k */
-            --accent-red: #e63946;     /* Yorqin qizil */
-            --light-white: #f1faee;    /* Mayin oq */
-            --pure-white: #ffffff;
+            --yt-blue: #065fd4;
+            --yt-red: #ff0000;
+            --bg-black: #0f0f0f;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: var(--primary-blue);
-            color: var(--pure-white);
-            overflow-x: hidden;
+            background-color: var(--bg-black);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(29, 53, 87, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            z-index: 100;
-            border-bottom: 3px solid var(--accent-red);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--accent-red);
-        }
-
-        /* 2. SLAYDER TIZIMI */
-        .slider-section {
-            width: 100%;
-            height: 100vh;
-            padding-top: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* YOUTUBE PLEER RAMKASI (16:9 FORMAT) */
+        .player-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 9; /* Kompyuterda har doim 16:9 */
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 
+                        0 0 30px rgba(6, 95, 212, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
         .swiper {
-            width: 90%;
-            height: 80vh;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            border: 4px solid var(--pure-white);
+            width: 100%;
+            height: 100%;
         }
 
         .swiper-slide {
             position: relative;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: #000;
         }
 
-        /* Orqa fondagi rasm va uning animatsiyasi */
+        /* Silliq va sifatli yuklanadigan rasm */
         .swiper-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transform: scale(1.15);
-            transition: transform 5s ease;
-            opacity: 0.75;
-        }
-
-        /* Slayd faol bo'lganda rasm sekin yaqinlashadi */
-        .swiper-slide-active img {
-            transform: scale(1);
-        }
-
-        /* Matn bloki */
-        .slide-content {
-            position: absolute;
-            bottom: 10%;
-            left: 5%;
-            right: 5%;
-            z-index: 2;
-            max-width: 600px;
-            background: rgba(15, 23, 42, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 6px solid var(--accent-red);
-            transform: translateY(50px);
+            object-fit: contain; /* Rasmni buzmasdan to'liq ko'rsatadi */
             opacity: 0;
-            transition: all 0.8s ease;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        /* Slayd faol bo'lganda matn pastdan ko'tarilib chiqadi */
-        .swiper-slide-active .slide-content {
-            transform: translateY(0);
+        /* Aktiv slayd animatsiyasi */
+        .swiper-slide-active img {
             opacity: 1;
-            transition-delay: 0.4s;
         }
 
-        .slide-content h2 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .slide-content p {
-            font-size: 16px;
-            color: var(--light-white);
-            line-height: 1.6;
-        }
-
-        /* NAVIGATSIYA TUGMALARI */
+        /* NAVIGATSIYA TUGMALARI (YOUTUBE USLUBIDA) */
         .swiper-button-next, .swiper-button-prev {
-            color: var(--pure-white) !important;
-            background: var(--accent-red);
-            width: 55px;
-            height: 55px;
+            color: #ffffff !important;
+            background: rgba(0, 0, 0, 0.6);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            transition: all 0.3s ease;
-            border: 2px solid var(--pure-white);
+            opacity: 0; /* Sichqoncha kelgandagina ko'rinadi */
+            transition: all 0.2s ease;
         }
 
         .swiper-button-next:after, .swiper-button-prev:after {
@@ -152,135 +89,104 @@
             font-weight: bold;
         }
 
+        .player-container:hover .swiper-button-next,
+        .player-container:hover .swiper-button-prev {
+            opacity: 1;
+        }
+
         .swiper-button-next:hover, .swiper-button-prev:hover {
-            background: var(--pure-white);
-            color: var(--accent-red) !important;
+            background: rgba(255, 0, 0, 0.8); /* Qizil chiroq effekti */
             transform: scale(1.1);
         }
 
-        /* PAGINATION (PASTDAGI NUQTALAR) */
-        .swiper-pagination-bullet {
-            background: var(--pure-white) !important;
-            opacity: 0.5;
-            width: 12px;
-            height: 12px;
+        /* PROGRESS BAR (YOUTUBE CHIZIG'I) */
+        .swiper-pagination-progressbar {
+            background: rgba(255, 255, 255, 0.2) !important;
+            height: 4px !important;
+            top: auto !important;
+            bottom: 0 !important;
         }
 
-        .swiper-pagination-bullet-active {
-            background: var(--accent-red) !important;
-            opacity: 1 !important;
-            width: 35px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+        .swiper-pagination-progressbar-fill {
+            background: linear-gradient(90deg, var(--yt-blue), var(--yt-red)) !important; /* Ko'k va Qizil yuklanish chizig'i */
         }
 
-        /* MOBIL EKRANLAR UCHUN MOSLASHUVCHANLIK */
-        @media (max-width: 768px) {
-            .swiper {
-                height: 65vh;
+        /* 📱 TELEFONNI YON TOMONGA BURGANDA TO'LIQ EKRAN (ALBOMLI MOD) */
+        @media (max-width: 900px) and (orientation: landscape) {
+            body {
+                padding: 0;
+                background: #000;
+            }
+            .player-container {
+                width: 100vw;
+                height: 100vh;
+                max-width: none;
+                border-radius: 0;
+                border: none;
+                aspect-ratio: auto;
+            }
+        }
+
+        /* Oddiy tik turgan telefonlar uchun moslashuv */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .player-container {
                 width: 95%;
-            }
-            .slide-content h2 {
-                font-size: 22px;
-            }
-            .slide-content p {
-                font-size: 14px;
+                border-radius: 8px;
             }
             .swiper-button-next, .swiper-button-prev {
-                display: none; /* Telefonlarda barmoq bilan suriladi */
+                display: none; /* Tik turganda ekranni surish osonroq */
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Kreativ<span>Slayder</span></div>
-        <div style="font-size: 14px;">10 ta Premium Slayd</div>
-    </header>
-
-    <section class="slider-section">
+    <div class="player-container">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200" alt="Rasm 1">
-                    <div class="slide-content">
-                        <h2>Birinchi Slayd</h2>
-                        <p>Bu yerga slayd haqidagi matnni yozasiz. Ranglar ko'k, qizil va oq uyg'unligida yaratilgan.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/di3teksqma1zliv0ajgez/file_00000000109c720aa9d126c5a30410e5.png?rlkey=lv29olajgqiju5xrdhtsfoncj&st=8m9tm9hc&raw=1" alt="Slayd 1">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200" alt="Rasm 2">
-                    <div class="slide-content">
-                        <h2>Ikkinchi Slayd</h2>
-                        <p>Dropbox havolasini qo'yganda, link oxiridagi ?dl=0 qismini ?raw=1 ga o'zgartirish shart.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/257hbgqzurvth0wbtlx4h/file_000000009f7c72468acdaa96dd310b6a.png?rlkey=xn9qjcvdjyj411u4mn9a4t4kq&st=bi0c1s84&raw=1" alt="Slayd 2">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200" alt="Rasm 3">
-                    <div class="slide-content">
-                        <h2>Uchinchi Slayd</h2>
-                        <p>Har bir slayd o'zgarganda silliq fade effekti ishlaydi.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/wfy3dc5m17l79qzj77f66/file_00000000cbfc7243ad0c9514af755199.png?rlkey=vag8461z8wxa6o3xstvpjrrdz&st=q7o6k0va&raw=1" alt="Slayd 3">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200" alt="Rasm 4">
-                    <div class="slide-content">
-                        <h2>To'rtinchi Slayd</h2>
-                        <p>Ushbu dizayn kompyuterlarda ham, telefonlarda ham ideal ko'rinadi.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/r6kmd9m9vk4gj9d4xb82p/file_00000000501c7243b8033978b2c51b7a.png?rlkey=lohpapd1zracb0vhpax21szny&st=f9fu6um4&raw=1" alt="Slayd 4">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200" alt="Rasm 5">
-                    <div class="slide-content">
-                        <h2>Beshinchi Slayd</h2>
-                        <p>Animatsiyalar juda silliq va sifatli ishlaydi.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/1b6bwfqngnunudozmdh5o/file_000000008b8471f4b4d6962dd92389d0.png?rlkey=ljatzvrunflb2hqt47i1d6074&st=3j5fzoq2&raw=1" alt="Slayd 5">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200" alt="Rasm 6">
-                    <div class="slide-content">
-                        <h2>Oltinchi Slayd</h2>
-                        <p>Matn turgan blokning chap qismida qizil chiziqli zamonaviy dizayn bor.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/i89i6g0rmnz5sy49p9mgy/file_000000007c4471f4a92faf0093c81241.png?rlkey=m6dmk73tfmt50kjm3dq0r0hcy&st=xiekdzgq&raw=1" alt="Slayd 6">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200" alt="Rasm 7">
-                    <div class="slide-content">
-                        <h2>Yettinchi Slayd</h2>
-                        <p>Slaydlar har 4.5 soniyada avtomatik ravishda o'zi almashadi.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/7jlq7e3gc5cj36dmt92bk/file_00000000c6cc720aa7ae4f2d3ab3d159.png?rlkey=pxhg3zaehd5d7rlu8ys7g4m9f&st=dfkctvlb&raw=1" alt="Slayd 7">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1200" alt="Rasm 8">
-                    <div class="slide-content">
-                        <h2>Sakkizinchi Slayd</h2>
-                        <p>Pastdagi faol nuqta ham qizil rangda kengayib animatsiya hosil qiladi.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/qv00kt4yft8so7xx8fb2g/file_00000000b66c720abbb312faebda89d1.png?rlkey=1m7rth1l0nckll1to6elh7r8t&st=1ful95vt&raw=1" alt="Slayd 8">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200" alt="Rasm 9">
-                    <div class="slide-content">
-                        <h2>To'qqizinchi Slayd</h2>
-                        <p>Kodni istalgan joyga osonlikcha integratsiya qilish mumkin.</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/s4gyo4cidk3zwzatxl9cc/file_0000000030e0720abf25f366b12c06d0.png?rlkey=pfuqcat51j5t6ep7zd83yfiqq&st=ortzmq2a&raw=1" alt="Slayd 9">
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200" alt="Rasm 10">
-                    <div class="slide-content">
-                        <h2>O'ninchi Slayd</h2>
-                        <p>Yakuniy slayd. E'tiboringiz uchun rahmat!</p>
-                    </div>
+                    <img src="https://www.dropbox.com/scl/fi/npbjad8xr6bxkhf2eqrf5/file_000000005ac8720a9fc448da9d4c9743.png?rlkey=69awf9bcnjh9py67e6igaa0m1&st=z3a249mq&raw=1" alt="Slayd 10">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://www.dropbox.com/scl/fi/vj6mf8c5twwwysxm82d5g/file_00000000c79471f4b7a6a089326e51f6.png?rlkey=ae7gx7vxn7qbsfin8s3pgrmuo&st=g4pr1nsl&raw=1" alt="Slayd 11">
                 </div>
 
             </div>
@@ -289,21 +195,25 @@
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
         </div>
-    </section>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
-            spaceBetween: 30,
+            preloadImages: false,
+            lazy: true,
+            spaceBetween: 0,
             centeredSlides: true,
-            effect: "fade", /* Silliq o'tish effekti */
+            keyboard: {
+                enabled: true, /* Kompyuter klaviaturasidagi o'ng/chap tugma bilan boshqariladi */
+            },
             autoplay: {
-                delay: 4500, /* 4.5 soniya kutish */
+                delay: 4000, /* 4 soniyada avtomat almashadi */
                 disableOnInteraction: false,
             },
             pagination: {
                 el: ".swiper-pagination",
-                clickable: true,
+                type: "progressbar", /* YouTube qizil liniya effekti */
             },
             navigation: {
                 nextEl: ".swiper-button-next",
