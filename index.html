@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Style Premium Slider</title>
+    <title>YouTube Style Premium Slider (Manual)</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -36,7 +36,7 @@
             position: relative;
             width: 90%;
             max-width: 1200px;
-            aspect-ratio: 16 / 9; /* Kompyuterda har doim 16:9 */
+            aspect-ratio: 16 / 9;
             background: #000;
             border-radius: 12px;
             overflow: hidden;
@@ -59,28 +59,26 @@
             background: #000;
         }
 
-        /* Silliq va sifatli yuklanadigan rasm */
         .swiper-slide img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Rasmni buzmasdan to'liq ko'rsatadi */
+            object-fit: contain;
             opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.5s ease;
         }
 
-        /* Aktiv slayd animatsiyasi */
         .swiper-slide-active img {
             opacity: 1;
         }
 
-        /* NAVIGATSIYA TUGMALARI (YOUTUBE USLUBIDA) */
+        /* NAVIGATSIYA TUGMALARI */
         .swiper-button-next, .swiper-button-prev {
             color: #ffffff !important;
             background: rgba(0, 0, 0, 0.6);
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            opacity: 0; /* Sichqoncha kelgandagina ko'rinadi */
+            opacity: 0;
             transition: all 0.2s ease;
         }
 
@@ -95,11 +93,11 @@
         }
 
         .swiper-button-next:hover, .swiper-button-prev:hover {
-            background: rgba(255, 0, 0, 0.8); /* Qizil chiroq effekti */
+            background: rgba(255, 0, 0, 0.8);
             transform: scale(1.1);
         }
 
-        /* PROGRESS BAR (YOUTUBE CHIZIG'I) */
+        /* PROGRESS BAR (PASTDAGI CHIZIQ) */
         .swiper-pagination-progressbar {
             background: rgba(255, 255, 255, 0.2) !important;
             height: 4px !important;
@@ -108,10 +106,10 @@
         }
 
         .swiper-pagination-progressbar-fill {
-            background: linear-gradient(90deg, var(--yt-blue), var(--yt-red)) !important; /* Ko'k va Qizil yuklanish chizig'i */
+            background: linear-gradient(90deg, var(--yt-blue), var(--yt-red)) !important;
         }
 
-        /* 📱 TELEFONNI YON TOMONGA BURGANDA TO'LIQ EKRAN (ALBOMLI MOD) */
+        /* ALBOM REJIMIDA TO'LIQ EKRAN */
         @media (max-width: 900px) and (orientation: landscape) {
             body {
                 padding: 0;
@@ -127,14 +125,13 @@
             }
         }
 
-        /* Oddiy tik turgan telefonlar uchun moslashuv */
         @media (max-width: 768px) and (orientation: portrait) {
             .player-container {
                 width: 95%;
                 border-radius: 8px;
             }
             .swiper-button-next, .swiper-button-prev {
-                display: none; /* Tik turganda ekranni surish osonroq */
+                display: none;
             }
         }
     </style>
@@ -200,20 +197,16 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
-            preloadImages: false,
-            lazy: true,
             spaceBetween: 0,
             centeredSlides: true,
+            effect: "slide", /* Silliq surilish effekti */
             keyboard: {
-                enabled: true, /* Kompyuter klaviaturasidagi o'ng/chap tugma bilan boshqariladi */
+                enabled: true, /* Klaviaturadan boshqarish */
             },
-            autoplay: {
-                delay: 4000, /* 4 soniyada avtomat almashadi */
-                disableOnInteraction: false,
-            },
+            // Autoplay butunlay olib tashlandi
             pagination: {
                 el: ".swiper-pagination",
-                type: "progressbar", /* YouTube qizil liniya effekti */
+                type: "progressbar",
             },
             navigation: {
                 nextEl: ".swiper-button-next",
