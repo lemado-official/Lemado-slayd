@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Animatsion Slayd</title>
+    <title>Premium Animatsion Slayd</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        /* 1. ASOSIY STILLAR (Oq, Ko'k va Qizil ranglar) */
+        /* 1. RANGLAR VA ASOSIY STILLAR */
         :root {
             --primary-blue: #1d3557;   /* To'q ko'k */
             --accent-red: #e63946;     /* Yorqin qizil */
             --light-white: #f1faee;    /* Mayin oq */
             --pure-white: #ffffff;
-            --text-dark: #0f172a;
         }
 
         * {
@@ -36,14 +35,13 @@
             flex-direction: column;
         }
 
-        /* Navigatsiya paneli */
         header {
             width: 100%;
             padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(29, 53, 87, 0.9);
+            background: rgba(29, 53, 87, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
@@ -54,7 +52,6 @@
         .logo {
             font-size: 24px;
             font-weight: 800;
-            color: var(--pure-white);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -63,11 +60,11 @@
             color: var(--accent-red);
         }
 
-        /* 2. SWIPER SLAYDER QISMI */
+        /* 2. SLAYDER TIZIMI */
         .slider-section {
             width: 100%;
             height: 100vh;
-            padding-top: 80px; /* Header uchun joy */
+            padding-top: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -87,22 +84,22 @@
             background: #000;
         }
 
-        /* Rasm stillari */
+        /* Orqa fondagi rasm va uning animatsiyasi */
         .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.1);
-            transition: transform 6s ease;
+            transform: scale(1.15);
+            transition: transform 5s ease;
             opacity: 0.75;
         }
 
-        /* Slayd aktiv bo'lganda rasm effekti (Ken Burns Effect) */
+        /* Slayd faol bo'lganda rasm sekin yaqinlashadi */
         .swiper-slide-active img {
             transform: scale(1);
         }
 
-        /* Matn konteyneri va animatsiyalar */
+        /* Matn bloki */
         .slide-content {
             position: absolute;
             bottom: 10%;
@@ -110,7 +107,7 @@
             right: 5%;
             z-index: 2;
             max-width: 600px;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.8);
             padding: 30px;
             border-radius: 15px;
             border-left: 6px solid var(--accent-red);
@@ -119,18 +116,17 @@
             transition: all 0.8s ease;
         }
 
-        /* Slayd aktiv bo'lganda matn animatsiyasi */
+        /* Slayd faol bo'lganda matn pastdan ko'tarilib chiqadi */
         .swiper-slide-active .slide-content {
             transform: translateY(0);
             opacity: 1;
-            transition-delay: 0.3s;
+            transition-delay: 0.4s;
         }
 
         .slide-content h2 {
             font-size: 32px;
             font-weight: 800;
             margin-bottom: 10px;
-            color: var(--pure-white);
             text-transform: uppercase;
         }
 
@@ -140,7 +136,7 @@
             line-height: 1.6;
         }
 
-        /* Navigatsiya tugmalari (Qizil va Oq) */
+        /* NAVIGATSIYA TUGMALARI */
         .swiper-button-next, .swiper-button-prev {
             color: var(--pure-white) !important;
             background: var(--accent-red);
@@ -162,7 +158,7 @@
             transform: scale(1.1);
         }
 
-        /* Sahifalash nuqtalari (Pagination) */
+        /* PAGINATION (PASTDAGI NUQTALAR) */
         .swiper-pagination-bullet {
             background: var(--pure-white) !important;
             opacity: 0.5;
@@ -173,15 +169,16 @@
         .swiper-pagination-bullet-active {
             background: var(--accent-red) !important;
             opacity: 1 !important;
-            width: 30px;
+            width: 35px;
             border-radius: 10px;
             transition: all 0.3s ease;
         }
 
-        /* 3. RESPONSIVE (Mobil qurilmalar uchun) */
+        /* MOBIL EKRANLAR UCHUN MOSLASHUVCHANLIK */
         @media (max-width: 768px) {
             .swiper {
                 height: 65vh;
+                width: 95%;
             }
             .slide-content h2 {
                 font-size: 22px;
@@ -190,7 +187,7 @@
                 font-size: 14px;
             }
             .swiper-button-next, .swiper-button-prev {
-                display: none; /* Mobil telefonda tugmalar yashiriladi, surish orqali ishlaydi */
+                display: none; /* Telefonlarda barmoq bilan suriladi */
             }
         }
     </style>
@@ -198,8 +195,8 @@
 <body>
 
     <header>
-        <div class="logo">Kreativ<span>Slayd</span></div>
-        <div style="font-size: 14px; color: var(--light-white);">10 Talik Premium Galereya</div>
+        <div class="logo">Kreativ<span>Slayder</span></div>
+        <div style="font-size: 14px;">10 ta Premium Slayd</div>
     </header>
 
     <section class="slider-section">
@@ -207,26 +204,26 @@
             <div class="swiper-wrapper">
                 
                 <div class="swiper-slide">
-                    <img src="https://www.dropbox.com/scl/fi/di3teksqma1zliv0ajgez/file_00000000109c720aa9d126c5a30410e5.png?rlkey=lv29olajgqiju5xrdhtsfoncj&st=gc22f5sy&raw=1" alt="Rasm 1">
+                    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200" alt="Rasm 1">
                     <div class="slide-content">
-                        <h2>LEMADO</h2>
-                        <p>+998 77 704 24 89</p>
+                        <h2>Birinchi Slayd</h2>
+                        <p>Bu yerga slayd haqidagi matnni yozasiz. Ranglar ko'k, qizil va oq uyg'unligida yaratilgan.</p>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://www.dropbox.com/scl/fi/257hbgqzurvth0wbtlx4h/file_000000009f7c72468acdaa96dd310b6a.png?rlkey=xn9qjcvdjyj411u4mn9a4t4kq&st=uwh9wcym&raw=1" alt="Rasm 2">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200" alt="Rasm 2">
                     <div class="slide-content">
-                        <h2>LEMADO</h2>
-                        <p>+998 77 704 24 89</p>
+                        <h2>Ikkinchi Slayd</h2>
+                        <p>Dropbox havolasini qo'yganda, link oxiridagi ?dl=0 qismini ?raw=1 ga o'zgartirish shart.</p>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
-                    <img src="https://www.dropbox.com/scl/fi/wfy3dc5m17l79qzj77f66/file_00000000cbfc7243ad0c9514af755199.png?rlkey=vag8461z8wxa6o3xstvpjrrdz&st=ee9edo5z&raw=1" alt="Rasm 3">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200" alt="Rasm 3">
                     <div class="slide-content">
-                        <h2>LEMADO</h2>
-                        <p>+998 77 704 24 89</p>
+                        <h2>Uchinchi Slayd</h2>
+                        <p>Har bir slayd o'zgarganda silliq fade effekti ishlaydi.</p>
                     </div>
                 </div>
 
@@ -234,7 +231,7 @@
                     <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200" alt="Rasm 4">
                     <div class="slide-content">
                         <h2>To'rtinchi Slayd</h2>
-                        <p>Matnlarni o'zingiz xohlagancha o'zgartirishingiz yoki o'chirib tashlashingiz ham mumkin.</p>
+                        <p>Ushbu dizayn kompyuterlarda ham, telefonlarda ham ideal ko'rinadi.</p>
                     </div>
                 </div>
 
@@ -242,7 +239,7 @@
                     <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200" alt="Rasm 5">
                     <div class="slide-content">
                         <h2>Beshinchi Slayd</h2>
-                        <p>Har bir slayd yuqori sifatli va zamonaviy UI/UX talablariga mos keladi.</p>
+                        <p>Animatsiyalar juda silliq va sifatli ishlaydi.</p>
                     </div>
                 </div>
 
@@ -250,7 +247,7 @@
                     <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200" alt="Rasm 6">
                     <div class="slide-content">
                         <h2>Oltinchi Slayd</h2>
-                        <p>Sayt to'liq avtomatlashtirilgan. Ma'lum soniyadan keyin slayd o'zi mustaqil aylanadi.</p>
+                        <p>Matn turgan blokning chap qismida qizil chiziqli zamonaviy dizayn bor.</p>
                     </div>
                 </div>
 
@@ -258,7 +255,7 @@
                     <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200" alt="Rasm 7">
                     <div class="slide-content">
                         <h2>Yettinchi Slayd</h2>
-                        <p>Mobil telefonlarda ham, planshetlarda ham ekran o'lchamiga juda chiroyli moslashadi.</p>
+                        <p>Slaydlar har 4.5 soniyada avtomatik ravishda o'zi almashadi.</p>
                     </div>
                 </div>
 
@@ -266,7 +263,7 @@
                     <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1200" alt="Rasm 8">
                     <div class="slide-content">
                         <h2>Sakkizinchi Slayd</h2>
-                        <p>Ranglar palitrasi foydalanuvchining ko'zini charchatmaydigan kontrastga ega.</p>
+                        <p>Pastdagi faol nuqta ham qizil rangda kengayib animatsiya hosil qiladi.</p>
                     </div>
                 </div>
 
@@ -274,15 +271,15 @@
                     <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200" alt="Rasm 9">
                     <div class="slide-content">
                         <h2>To'qqizinchi Slayd</h2>
-                        <p>Kodni istalgan hostingga yoki bepul GitHub Pages xizmatiga yuklashingiz mumkin.</p>
+                        <p>Kodni istalgan joyga osonlikcha integratsiya qilish mumkin.</p>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200" alt="Rasm 10">
                     <div class="slide-content">
-                        <h2>O'ninchi Yakuniy Slayd</h2>
-                        <p>Ushbu loyiha sizning taqdimotingiz yoki galereyangiz uchun ajoyib yechim bo'ladi.</p>
+                        <h2>O'ninchi Slayd</h2>
+                        <p>Yakuniy slayd. E'tiboringiz uchun rahmat!</p>
                     </div>
                 </div>
 
@@ -299,9 +296,9 @@
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 30,
             centeredSlides: true,
-            effect: "fade", /* Slayd silliq yo'qolib, yangisi paydo bo'lish effekti */
+            effect: "fade", /* Silliq o'tish effekti */
             autoplay: {
-                delay: 4500, /* 4.5 soniyada slayd almashadi */
+                delay: 4500, /* 4.5 soniya kutish */
                 disableOnInteraction: false,
             },
             pagination: {
@@ -316,3 +313,4 @@
     </script>
 </body>
 </html>
+
